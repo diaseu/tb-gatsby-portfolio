@@ -5,18 +5,17 @@ import {
   MailOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { Button, Menu } from "antd";
+import { Menu, Row, Col, Card } from "antd";
+import { Helmet } from "react-helmet";
+import ModalComponent from "../components/ModalComponent";
+import "../styles/style.css";
 
 const pageStyles = {
   color: "#232129",
   padding: 60,
   fontFamily: "-apple-system, Roboto, sans-serif, serif",
 };
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 0,
-  maxWidth: 320,
-};
+
 const headingAccentStyles = {
   color: "#663399",
 };
@@ -83,6 +82,90 @@ const badgeStyle = {
   marginLeft: 10,
   lineHeight: 1,
 };
+
+const projects = [
+  {
+    id: 0,
+    name: "Dise Design v2",
+    blurb: "Personal Portfolio Site v2 for Dia Seung",
+    description:
+      "Dise Design v2 was a redesign of my personal portfolio site. I wasn't too thrilled with the first iteration and also wanted to explore using new technology, especially Gatsby and SASS, to improve my skills. This portfolio showcases recent projects I've worked on, as well as my contact info. Built on React, Deployed on Netlify",
+    url: "https://www.disedesign.com",
+    git: "https://github.com/diaseu/disedesign-gatsby",
+    img: "https://i.imgur.com/ClXP6wG.png",
+    technology: ["Javascript", "React.JS", "Node.JS", "Gatsby", "SASS"],
+  },
+  {
+    id: 1,
+    name: "Dise Design v1",
+    blurb: "Personal Portfolio Site v1 for Dia Seung",
+    description:
+      "Dise Design v1 was the first iteration of my personal portfolio site that focused on utilizing ANT Design styling library and React. It showcased recent projects I've worked on, as well as contact info. Built on React, Deployed on Netlify",
+    url: "https://silly-brattain-2e84c2.netlify.app/",
+    git: "https://github.com/diaseu/disedesign-netlify",
+    img: "https://i.imgur.com/xwtIYfG.png",
+    technology: ["Javascript", "React.JS", "Node.JS", "Ant Design"],
+  },
+  {
+    id: 2,
+    name: "Zap: Bug Tracker",
+    blurb:
+      "Social bug tracking app, with the ability to crowd-source solutions to issues and questions",
+    description:
+      "ZAP App is a bug tracking/project management app that innovates on currently existing forms such as Trello or Jira, and give it a social twist.  Zap App gives users the ability to create projects and organize tasks, bugs and issues, and then reach out to the community to crowdsource solutions and answers. Built on MERN stack, deployed on Heroku",
+    url: "https://zapbugtracker.herokuapp.com/",
+    git: "https://github.com/diaseu/project3",
+    img: "https://i.imgur.com/nJf59GQ.png",
+    technology: [
+      "Javascript",
+      "MongoDB",
+      "Express",
+      "React.JS",
+      "Node.JS",
+      "Material-UI",
+    ],
+  },
+  {
+    id: 3,
+    name: "Study Blog",
+    blurb:
+      "Social blog app where users can post, comment and vote on student-created content",
+    description:
+      "Study Blog is a student-centered forum website for students to share notes, curated and promoted through voting. Users are able to create rich-text posts chasing any notes and articles related to a specific topic, which are sorted into topic categories. Users can register by creating a username and a password and entering their email address. All passwords are encrypted using passport and jsonwebtoken modules. Users can upvote/downvote or comment on other users' posts. All the user, post, and comment data is saved in an SQL database using the JAWSDB add-on on Heroku. This application allows users to post study material for the following topics:  HTML, Javascript, Node.JS, SQL.  Deployed on Heroku",
+    url: "https://studyblog.herokuapp.com/",
+    git: "https://github.com/diaseu/studyBlog",
+    img: "https://i.imgur.com/43rACDv.png",
+    technology: [
+      "Javascript",
+      "MySQL2",
+      "Express",
+      "React.JS",
+      "Node.JS",
+      "Passport",
+      "JSON Web Token",
+      "Sequelize",
+    ],
+  },
+  {
+    id: 4,
+    name: "Beleaf Co.",
+    blurb: "Online boutique shop specializing in rare tropical plants",
+    description:
+      "Beleaf Co. is a online boutique shop specializing in sales of rare tropical plants and various related accessories. This started as a personal passion in collecting rare tropical houseplants, which eventually led to sharing the plant love with the local community. COMING SOON ",
+    url: "https://www.beleafco.me",
+    git: "https://github.com/diaseu?tab=repositories",
+    img: "https://i.imgur.com/nJf59GQ.png",
+    technology: [
+      "Javascript",
+      "MongoDB",
+      "Express",
+      "React.JS",
+      "Node.JS",
+      "Commerce.JS",
+      "Material-UI",
+    ],
+  },
+];
 
 const links = [
   {
@@ -165,51 +248,75 @@ const IndexPage = () => {
     setCurrent(e.key);
   };
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>pseudogeny</h1>
-      <Menu
-        onClick={onClick}
-        selectKeys={[current]}
-        mode="horizontal"
-        items={items}
-      />
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map((link) => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
+    <div style={pageStyles}>
+      <Helmet>
+        <link
+          href="https://fonts.googleapis.com/css?family=Kalam"
+          rel="stylesheet"
+        />
+      </Helmet>
+      <header class="header">
+        <h1>pseudogeny</h1>
+        <Menu
+          onClick={onClick}
+          selectKeys={[current]}
+          mode="horizontal"
+          items={items}
+        />
+      </header>
+      <main>
+        <p style={paragraphStyles}>
+          Edit <code style={codeStyles}>src/pages/index.js</code> to see this
+          page update in real-time. 😎
+        </p>
+        <section>
+          <h2>
+            <small>See My</small> Projects
+          </h2>
+          <Row>
+            {projects.map((project) => (
+              <Col xs={24} sm={12} md={12} lg={8} xl={8} xxl={6}>
+                <Card hoverable className="dark" style={{ width: "100%" }}>
+                  <ModalComponent project={project} />
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </section>
+        <ul style={listStyles}>
+          <li style={docLinkStyle}>
+            <a
+              style={linkStyle}
+              href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
+            >
+              {docLink.text}
+            </a>
           </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
+          {links.map((link) => (
+            <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
+              <span>
+                <a
+                  style={linkStyle}
+                  href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
+                >
+                  {link.text}
+                </a>
+                {link.badge && (
+                  <span style={badgeStyle} aria-label="New Badge">
+                    NEW!
+                  </span>
+                )}
+                <p style={descriptionStyle}>{link.description}</p>
+              </span>
+            </li>
+          ))}
+        </ul>
+        <img
+          alt="Gatsby G Logo"
+          src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
+        />
+      </main>
+    </div>
   );
 };
 
