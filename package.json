@@ -1,0 +1,26 @@
+{
+  "name": "fs-gatsby-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "fs-gatsby-portfolio",
+  "author": "dianaseung",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.1.4",
+    "antd": "^5.6.4",
+    "gatsby": "^5.11.0",
+    "gatsby-plugin-antd": "^2.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0"
+  }
+}
